@@ -1,5 +1,13 @@
 import random as r
 
+def esta_na_lista(pais, lista):
+    esta = False
+    for item in lista:
+        nome = item[0]
+        if nome == pais:
+            esta = True
+    return esta
+
 def sorteia_letra(palavra,lista):
     total = ['.', ',', '-', ';', ' ']
     for elemento in lista:
