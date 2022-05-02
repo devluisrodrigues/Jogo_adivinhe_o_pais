@@ -1,5 +1,5 @@
 import random as r
-from turtle import clear
+
 def sorteia_letra(palavra,lista):
     total = ['.', ',', '-', ';', ' ']
     for elemento in lista:
@@ -25,7 +25,3 @@ def sorteia_letra(palavra,lista):
         sort = r.choice(final)
         sort = sort.lower()
         return sort
-
-clear
-for i in range(30000):
-    print(sorteia_letra('paralelipedo-amarelo-alemao-bonitinho',['c','p','n','h']))
