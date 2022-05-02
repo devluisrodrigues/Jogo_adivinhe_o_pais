@@ -1,4 +1,5 @@
 import random as r
+from math import *
 
 def adiciona_em_ordem(pais,dist,paises):
     inter = []
@@ -52,3 +53,33 @@ def sorteia_letra(palavra,lista):
         sort = r.choice(final)
         sort = sort.lower()
         return sort
+
+def sorteia_pais(paises):
+    chaves = paises.keys()
+    sort = r.choice(list(chaves))
+    return sort
+
+def haversine(r,p1,l1,p2,l2):
+    pt1 = (sin(radians((p2-p1))/2))**2
+    pt2 = cos(radians(p1))*cos(radians(p2))*((sin(radians((l2-l1))/2))**2)
+    d = 2*r*asin(sqrt(pt1+pt2))
+    return d
+
+def adiciona_em_ordem(pais,dist,paises):
+    inter = []
+    lista = [pais,dist]
+    for lugar in paises:
+        dist2 = lugar[1]
+        if dist < dist2 and lista not in inter:
+            inter.append(lista)
+            inter.append(lugar)
+        else:
+            inter.append(lugar)
+            
+    if paises == []:
+        inter.append(lista)
+    
+    if lista not in inter:
+        inter.append(lista)
+
+    return inter
