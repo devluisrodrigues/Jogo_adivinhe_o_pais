@@ -1,5 +1,24 @@
 import random as r
 
+def adiciona_em_ordem(pais,dist,paises):
+    inter = []
+    lista = [pais,dist]
+    for lugar in paises:
+        dist2 = lugar[1]
+        if dist < dist2 and lista not in inter:
+            inter.append(lista)
+            inter.append(lugar)
+        else:
+            inter.append(lugar)
+            
+    if paises == []:
+        inter.append(lista)
+    
+    if lista not in inter:
+        inter.append(lista)
+
+    return inter
+
 def esta_na_lista(pais, lista):
     esta = False
     for item in lista:
