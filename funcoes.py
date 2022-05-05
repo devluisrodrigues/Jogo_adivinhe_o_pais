@@ -1,24 +1,13 @@
 import random as r
 from math import *
 
-def adiciona_em_ordem(pais,dist,paises):
-    inter = []
-    lista = [pais,dist]
-    for lugar in paises:
-        dist2 = lugar[1]
-        if dist < dist2 and lista not in inter:
-            inter.append(lista)
-            inter.append(lugar)
-        else:
-            inter.append(lugar)
-            
-    if paises == []:
-        inter.append(lista)
-    
-    if lista not in inter:
-        inter.append(lista)
-
-    return inter
+def normaliza(dados_cru):
+    final = {}
+    for continente, paises in dados_cru.items():
+        for pais, infos in paises.items():
+            infos['continente'] = continente
+            final[pais] = infos
+    return final
 
 def esta_na_lista(pais, lista):
     esta = False
