@@ -1,4 +1,3 @@
-from email.mime import base
 from dados import DADOS
 from funcoes import normaliza, sorteia_pais
 
