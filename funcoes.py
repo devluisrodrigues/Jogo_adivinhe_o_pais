@@ -81,3 +81,4 @@ def organiza_dic(tentativas):
                 if tentativas[k] == i:
                     dic_org[k] = tentativas[k]
                     break
+        return dic_org
