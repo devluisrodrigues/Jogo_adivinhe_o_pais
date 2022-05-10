@@ -1,3 +1,5 @@
+from mailbox import NotEmptyError
+from unicodedata import name
 from dados import DADOS, EARTH_RADIUS
 from funcoes import esta_na_lista, haversine, normaliza, organiza_dic, sorteia_pais
 
@@ -52,8 +54,8 @@ while t >= 1 and jogada != 'desisto':
             tentativas[jogada] = dist
             certo = organiza_dic(tentativas)
     
-        for pais, dist in certo.items():
-            print(pais, '--------', dist)
+        for nome, dist in certo.items():
+            print(nome, '--------', dist)
         print(f"Voce ainda tem {t} tentativas restantes! \n")
         jogada = input("Qual sera sua proxima tentativa?")
 
