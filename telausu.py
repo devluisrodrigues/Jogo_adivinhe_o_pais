@@ -1,5 +1,5 @@
 from dados import DADOS, EARTH_RADIUS
-from funcoes import esta_na_lista, haversine, normaliza, sorteia_pais
+from funcoes import esta_na_lista, haversine, normaliza, organiza_dic, sorteia_pais
 
 
 print("\n\nBem-vindo ao Insper Países \n")
@@ -16,10 +16,10 @@ tentativas = {}
 
 
 #Tentativas do jogador
-jogada = input("Qual sera sua primeira jogada? ")
 t = 20
 print(f"Voce tem {t} tentativas:")
 print(pais)
+jogada = input("Qual sera sua primeira jogada? ")
 
 while t >= 1 and jogada != 'desisto':
     #JOGADOR ACERTOU
@@ -32,6 +32,7 @@ while t >= 1 and jogada != 'desisto':
     elif jogada == "inventario":
         print("\n Seu inventario: \n")
 
+    #JOGADOR DECIDIU COMPRAR UMA DICA
     elif jogada == "Dica":
         print("Mercado de dicas")
 
@@ -49,6 +50,12 @@ while t >= 1 and jogada != 'desisto':
             l2 = basenormal[jogada]["geo"]["longitude"]
             dist = haversine(EARTH_RADIUS,p1,l1,p2,l2)
             tentativas[jogada] = dist
+            certo = organiza_dic(tentativas)
+    
+        for pais, dist in certo.items():
+            print(pais, '--------', dist)
+        print(f"Voce ainda tem {t} tentativas restantes! \n")
+        jogada = input("Qual sera sua proxima tentativa?")
 
 
     #Tentativa INVÁLIDA:
