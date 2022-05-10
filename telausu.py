@@ -1,5 +1,3 @@
-from mailbox import NotEmptyError
-from unicodedata import name
 from dados import DADOS, EARTH_RADIUS
 from funcoes import esta_na_lista, haversine, normaliza, organiza_dic, sorteia_pais
 
@@ -24,6 +22,7 @@ print(pais)
 jogada = input("Qual sera sua primeira jogada? ")
 
 while t >= 1 and jogada != 'desisto':
+
     #JOGADOR ACERTOU
     if jogada == pais:
         print("Parabens Voce ganhou!!!!\n")
