@@ -14,5 +14,14 @@ print("Um país foi escolhido, tente adivinhar!")
 t = 20
 print(f"Voce tem {t} tentativas:")
 print(pais)
+
 while t >= 1 and jogada != 'desisto':
-    
+    #JOGADOR ACERTOU
+    if jogada == pais:
+        print("Parabens Voce ganhou!!!!\n")
+        print(f"O Pais escolhido era {pais}")
+        break
+
+    #JOGADOR QUER ABRIR O INVENTARIO
+    if jogada == "inventario":
+
