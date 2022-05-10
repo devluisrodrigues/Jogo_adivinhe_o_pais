@@ -4,7 +4,7 @@ from funcoes import esta_na_lista, normaliza, sorteia_pais
 
 print("\n\nBem-vindo ao Insper Países \n")
 print("Versão desenvolvida por Luis e Leonardo \n")
-print("Comandos: \n dica       - entra no mercado de dicas \n desisto    - desiste da rodada \n inventario - exibe sua posição \n")
+print("Comandos: \n dica       - entra no mercado de dicas \n desisto    - desiste da rodada \n inventario - abre o inventario \n")
 
 #Sorteando um pais:
 basenormal = normaliza(DADOS)
@@ -38,10 +38,13 @@ while t >= 1 and jogada != 'desisto':
     #Jogador que tentar um pais:
     elif esta_na_lista(jogada,basenormal):
         #A tentativa estava na lista de paises, mas nao era o correto
-         if jogada in tentativas.keys():
+        if jogada in tentativas.keys():
             print("\n Esse país já foi testado \n")
             jogada = input("Qual será sua proxima tentativa? ")
-    #Tentativa INVALIDA, 
+        else:
+            t -= 1
+
+    #Tentativa INVALIDA:
     else:
         print("Sua tentativa e invalida, tente novamente.")
         jogada = input("Digite aqui sua proxima tentativa: ")
