@@ -39,7 +39,7 @@ while t >= 1 and jogada != 'desisto':
         print("Mercado de dicas")
 
     #Jogador quer tentar um país:
-    elif esta_na_lista(jogada,basenormal):
+    elif jogada in basenormal:
         #A tentativa estava na lista de paises, mas nao era o correto
         if jogada in tentativas.keys():
             print("\n Esse país já foi testado \n")
