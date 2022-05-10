@@ -11,6 +11,10 @@ basenormal = normaliza(DADOS)
 pais = sorteia_pais(basenormal)
 print("Um país foi escolhido, tente adivinhar!")
 
+#Armazenando informações:
+tentativas = {}
+
+
 #Tentativas do jogador
 jogada = input("Qual sera sua primeira jogada? ")
 t = 20
@@ -34,7 +38,9 @@ while t >= 1 and jogada != 'desisto':
     #Jogador que tentar um pais:
     elif esta_na_lista(jogada,basenormal):
         #A tentativa estava na lista de paises, mas nao era o correto
-
+         if jogada in tentativas.keys():
+            print("\n Esse país já foi testado \n")
+            jogada = input("Qual será sua proxima tentativa? ")
     #Tentativa INVALIDA, 
     else:
         print("Sua tentativa e invalida, tente novamente.")
