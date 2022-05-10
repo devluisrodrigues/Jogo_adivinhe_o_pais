@@ -72,3 +72,12 @@ def adiciona_em_ordem(pais,dist,paises):
         inter.append(lista)
 
     return inter
+
+def organiza_dic(tentativas):
+        valores_org = sorted(tentativas.values()) # Organiza os valores do dicionario
+        dic_org = {}
+        for i in valores_org:
+            for k in tentativas.keys():
+                if tentativas[k] == i:
+                    dic_org[k] = tentativas[k]
+                    break
