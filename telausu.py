@@ -1,10 +1,10 @@
-from dados import DADOS
-from funcoes import esta_na_lista, normaliza, sorteia_pais
+from dados import DADOS, EARTH_RADIUS
+from funcoes import esta_na_lista, haversine, normaliza, sorteia_pais
 
 
 print("\n\nBem-vindo ao Insper Países \n")
 print("Versão desenvolvida por Luis e Leonardo \n")
-print("Comandos: \n dica       - entra no mercado de dicas \n desisto    - desiste da rodada \n inventario - abre o inventario \n")
+print("Comandos: \n dica       - entra no mercado de dicas \n desisto    - desiste da rodada \n inventario - exibe dicas e posição \n")
 
 #Sorteando um pais:
 basenormal = normaliza(DADOS)
@@ -35,7 +35,7 @@ while t >= 1 and jogada != 'desisto':
     elif jogada == "Dica":
         print("Mercado de dicas")
 
-    #Jogador que tentar um pais:
+    #Jogador quer tentar um país:
     elif esta_na_lista(jogada,basenormal):
         #A tentativa estava na lista de paises, mas nao era o correto
         if jogada in tentativas.keys():
@@ -43,8 +43,15 @@ while t >= 1 and jogada != 'desisto':
             jogada = input("Qual será sua proxima tentativa? ")
         else:
             t -= 1
+            p1 = basenormal[pais]["geo"]["latitude"]
+            l1 = basenormal[pais]["geo"]["longitude"]
+            p2 = basenormal[jogada]["geo"]["latitude"]
+            l2 = basenormal[jogada]["geo"]["longitude"]
+            dist = haversine(EARTH_RADIUS,p1,l1,p2,l2)
+            tentativas[jogada] = dist
 
-    #Tentativa INVALIDA:
+
+    #Tentativa INVÁLIDA:
     else:
         print("Sua tentativa e invalida, tente novamente.")
         jogada = input("Digite aqui sua proxima tentativa: ")
