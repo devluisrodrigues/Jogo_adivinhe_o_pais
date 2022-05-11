@@ -35,8 +35,8 @@ while t >= 1 and jogada != 'desisto':
     #JOGADOR DECIDIU COMPRAR UMA DICA
     elif jogada == "dica":
         opcoes = mercado_dicas(t)
-        print(opcoes)
-        
+        escolhida = input(f'Escolha uma dica: {opcoes}')
+
         
     #Jogador quer tentar um país:
     elif jogada in basenormal:
