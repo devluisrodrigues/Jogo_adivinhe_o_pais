@@ -1,4 +1,5 @@
 from dados import DADOS, EARTH_RADIUS
+from dicas import mercado_dicas
 from funcoes import esta_na_lista, haversine, normaliza, organiza_dic, sorteia_pais
 
 
@@ -14,7 +15,6 @@ print("Um país foi escolhido, tente adivinhar!")
 #Armazenando informações:
 tentativas = {}
 
-
 #Tentativas do jogador
 t = 20
 print(f"Voce tem {t} tentativas:")
@@ -25,7 +25,7 @@ while t >= 1 and jogada != 'desisto':
 
     #JOGADOR ACERTOU
     if jogada == pais:
-        print("Parabens Voce ganhou!!!!\n")
+        print("\n Parabens Voce ganhou!!!!\n")
         print(f"O Pais escolhido era {pais}")
         break
 
@@ -34,9 +34,11 @@ while t >= 1 and jogada != 'desisto':
         print("\n Seu inventario: \n")
 
     #JOGADOR DECIDIU COMPRAR UMA DICA
-    elif jogada == "Dica":
-        print("Mercado de dicas")
+    elif jogada == "dica":
+        opcoes = mercado_dicas(t)
+        escolhida = input(f'Escolha uma dica: {opcoes}')
 
+        
     #Jogador quer tentar um país:
     elif jogada in basenormal:
         #A tentativa estava na lista de paises, mas nao era o correto
