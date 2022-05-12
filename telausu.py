@@ -60,6 +60,9 @@ while t >= 1 and jogada != 'desisto':
             else:
                 dicas["Letra da capital:"].append(ele)
                 letras.append(ele)
+        
+        elif escolhida == 3:
+            
 
         for titulo, item in dicas.items():
             print(f"{titulo} {item}")
