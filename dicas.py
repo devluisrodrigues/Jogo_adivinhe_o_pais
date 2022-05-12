@@ -17,10 +17,7 @@ def mercado_dicas(t):
     return opcoes
 
 letras = []
-def escolhe_dica(basenormal,pais,escolhida, dicas,letras):
-    elif jogada == "dica":
-        opcoes = mercado_dicas(t)
-        escolhida = int(input(f'Escolha uma dica: {opcoes}'))
+def escolhe_dica(basenormal,pais,escolhida, dicas,t, opcoes):
         if escolhida not in opcoes:
             print("Essa dica não está disponível no momento, tente novamente")
             print("Saindo do mercado de dicas")
@@ -33,7 +30,6 @@ def escolhe_dica(basenormal,pais,escolhida, dicas,letras):
             if "Letra da capital:" not in dicas:
                 dicas["Letra da capital:"] = [ele]
                 letras = [ele]
-
             else:
                 dicas["Letra da capital:"].append(ele)
                 letras.append(ele)
@@ -51,7 +47,3 @@ def escolhe_dica(basenormal,pais,escolhida, dicas,letras):
             else:
                 print('Dica ja escolhida')
                 print('saindo do mercado de dicas')
- 
-        for titulo, item in dicas.items():
-            print(f"{titulo} {item}")
-        jogada = input("Qual será sua próxima jogada? ")    
