@@ -16,7 +16,6 @@ def mercado_dicas(t):
             print(f'{info[1]}.{info[0]}')  
     return opcoes
 
-letras = []
 def escolhe_dica(basenormal,pais,escolhida, dicas,t, opcoes):
         if escolhida not in opcoes:
             print("Essa dica não está disponível no momento, tente novamente")
@@ -26,6 +25,8 @@ def escolhe_dica(basenormal,pais,escolhida, dicas,t, opcoes):
         elif escolhida == 1:
             print("Cor da bandeira")
         elif escolhida == 2:
+            if "Letra da capital:" not in dicas:
+                letras = []
             ele = sorteia_letra(basenormal[pais]["capital"],letras)
             if "Letra da capital:" not in dicas:
                 dicas["Letra da capital:"] = [ele]
