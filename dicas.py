@@ -10,5 +10,5 @@ def mercado_dicas(t):
     for nome, info in dicas.items():
         if t > nome:
             opcoes.append(info[1])
-            print(f'{info[1]}.{info[0]}')
+            print(f'{info[1]}.{info[0]}')  
     return opcoes
