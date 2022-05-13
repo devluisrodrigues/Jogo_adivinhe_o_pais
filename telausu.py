@@ -23,6 +23,18 @@ letras = []
 #armazena as cores já sorteadas na lista de cores da bandeira:
 draw = []
 
+#Limpando cores da bandeira:
+lixo = []
+band = basenormal[pais]['bandeira']
+cores = band
+for cor, portcent in band.items():
+    if portcent == 0:
+        lixo.append(cor)
+    if cor == 'outras':
+        lixo.append(cor)
+for valor in lixo:
+    del cores[valor]
+
 #Tentativas do jogador
 t = 20
 print(f"Voce tem {t} tentativas:")
@@ -55,30 +67,17 @@ while t >= 1 and jogada != 'desisto':
 
         elif escolhida == 1:
             print("Cor da bandeira")
-            band = basenormal[pais]['bandeira']
-            names = list(band.keys())
-            portcent = list(band.values())
-            cor = choices(names,portcent)
-            for c in cor:
-                i = 0
-                tt = False
-                while not tt:
-                    if c != 'outras' and c not in draw:
-                        break
-                    if i > 100:
-                        break
-                    cor = choices(names,portcent)
-                    i += 1
-                if i > 100:
-                    print("Não é mais possível comprar cores da bandeira")
-                else:
-                    draw.append(c)
-                    idx = names.index(c)
-                    del names[idx]
-                    del portcent[idx]
-                    print(names)
-                    print(portcent)
-            dicas['Cor da bandeira: '] = draw
+            rgb = list(cores.keys())
+            port = list(cores.values())
+            if cores == {}:
+                print("\nTodas as cores já foram forncidas")
+                print("\nSaindo do mercado de dicas...")
+            else:
+                cor = choices(rgb,port)[0]
+                print(cor)
+                del cores[cor]
+                draw.append(cor)
+                dicas["Cor da bandeira: "] = draw
 
         elif escolhida == 2:
             if "Letra da capital:" not in dicas:
