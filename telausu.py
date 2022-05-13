@@ -86,6 +86,9 @@ while t >= 1 and jogada != 'desisto':
             if "Letra da capital:" not in dicas:
                 dicas["Letra da capital:"] = [ele]
                 letras = [ele]
+            elif ele == '':
+                print("\nTodas as letras da capital já foram sorteadas")
+                print("Saindo do mercado de dicas")
             else:
                 dicas["Letra da capital:"].append(ele)
                 letras.append(ele)
@@ -99,7 +102,7 @@ while t >= 1 and jogada != 'desisto':
 
         elif escolhida == 4:
             if 'Populacao' not in dicas:
-                dicas['Populacao'] = basenormal[pais]['populacao']
+                dicas['Populacao'] = str(basenormal[pais]['populacao']) + ' Habitantes'
             else:
                 print('Dica ja escolhida')
                 print('saindo do mercado de dicas')        
