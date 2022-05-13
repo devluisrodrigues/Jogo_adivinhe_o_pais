@@ -70,11 +70,10 @@ while t >= 1 and jogada != 'desisto':
             rgb = list(cores.keys())
             port = list(cores.values())
             if cores == {}:
-                print("\nTodas as cores já foram forncidas")
+                print("\nTodas as cores já foram fornecidas")
                 print("\nSaindo do mercado de dicas...")
             else:
                 cor = choices(rgb,port)[0]
-                print(cor)
                 del cores[cor]
                 draw.append(cor)
                 dicas["Cor da bandeira: "] = draw
