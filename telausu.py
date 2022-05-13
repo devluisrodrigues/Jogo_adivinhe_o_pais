@@ -1,3 +1,4 @@
+from random import choices
 from dados import DADOS, EARTH_RADIUS
 from dicas import escolhe_dica, mercado_dicas
 from funcoes import esta_na_lista, haversine, normaliza, organiza_dic, sorteia_letra, sorteia_pais
@@ -19,6 +20,8 @@ tentativas = {}
 dicas = {}
 #armazena as letras já sorteada na lista de letras da capital:
 letras = []
+#armazena as cores já sorteadas na lista de cores da bandeira:
+draw = []
 
 #Tentativas do jogador
 t = 20
@@ -41,7 +44,7 @@ while t >= 1 and jogada != 'desisto':
     #JOGADOR DECIDIU COMPRAR UMA DICA
     elif jogada == "dica":
         opcoes = mercado_dicas(t)
-        escolhida = int(input(f'Escolha uma dica: {opcoes}'))
+        escolhida = int(input(f'Escolha uma dica: {opcoes}: '))
 
         if escolhida not in opcoes:
             print("Essa dica não está disponível no momento, tente novamente")
@@ -52,6 +55,30 @@ while t >= 1 and jogada != 'desisto':
 
         elif escolhida == 1:
             print("Cor da bandeira")
+            band = basenormal[pais]['bandeira']
+            names = list(band.keys())
+            portcent = list(band.values())
+            cor = choices(names,portcent)
+            for c in cor:
+                i = 0
+                tt = False
+                while not tt:
+                    if c != 'outras' and c not in draw:
+                        break
+                    if i > 100:
+                        break
+                    cor = choices(names,portcent)
+                    i += 1
+                if i > 100:
+                    print("Não é mais possível comprar cores da bandeira")
+                else:
+                    draw.append(c)
+                    idx = names.index(c)
+                    del names[idx]
+                    del portcent[idx]
+                    print(names)
+                    print(portcent)
+            dicas['Cor da bandeira: '] = draw
 
         elif escolhida == 2:
             if "Letra da capital:" not in dicas:
@@ -66,7 +93,7 @@ while t >= 1 and jogada != 'desisto':
         
         elif escolhida == 3:
             if 'Area'not in dicas:
-                dicas["Area"] = basenormal[pais]['area']
+                dicas["Area"] = str(basenormal[pais]['area']) + " KM^2"
             else:
                 print('Dica ja escolhida')
                 print('Saindo do mercado de dicas')
@@ -83,7 +110,8 @@ while t >= 1 and jogada != 'desisto':
                 dicas['Continente: '] = basenormal[pais]['continente']
             else:
                 print('Dica ja escolhida')
-                print('saindo do mercado de dicas')  
+                print('saindo do mercado de dicas') 
+
         print('\n Dicas:')
         for titulo, item in dicas.items():
             print(f"{titulo} {item}")
