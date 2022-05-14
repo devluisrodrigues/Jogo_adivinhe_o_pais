@@ -43,6 +43,7 @@ while dnv == True:
     print("Voce tem " + Fore.LIGHTMAGENTA_EX + f"{t}" +Fore.RESET + " tentativas:")
     print(pais)
     jogada = input("Qual sera sua primeira jogada? ")
+    jogada = jogada.lower()
 
     while t >= 1 and jogada != 'desisto':
         #JOGADOR ACERTOU
@@ -78,6 +79,7 @@ while dnv == True:
 
             print(tentativas_res(t))
             jogada = input("Qual sera sua proxima tentativa?")
+            jogada = jogada.lower()
 
         #JOGADOR DECIDIU COMPRAR UMA DICA
         elif jogada == "dica":
@@ -155,6 +157,7 @@ while dnv == True:
             print(tentativas_res(t))
                 
             jogada = input("Qual será sua próxima jogada? ")
+            jogada = jogada.lower()
         
         #Jogador quer tentar um país:
         elif jogada in basenormal:
@@ -188,12 +191,14 @@ while dnv == True:
             if t>0:
                 print(tentativas_res(t))
                 jogada = input("Qual sera sua proxima tentativa?")
+                jogada = jogada.lower()
 
 
         #Tentativa INVÁLIDA:
         else:
             print("Sua tentativa e invalida, tente novamente.")
             jogada = input("Digite aqui sua proxima tentativa: ")
+            jogada = jogada.lower()
 
     if t == 0 and not ganhou:
         print(Fore.LIGHTRED_EX+"\n Suas tentativas esgotaram, voce perdeu \n"+ Fore.RESET)
@@ -205,4 +210,4 @@ while dnv == True:
         dnv = False
 
 print("\n Obrigado por jogar")
-print('Ate a proxima =) \n')
+print(' Ate a proxima =) \n')
