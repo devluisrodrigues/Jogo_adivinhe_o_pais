@@ -51,7 +51,20 @@ while t >= 1 and jogada != 'desisto':
 
     #JOGADOR QUER ABRIR O INVENTARIO
     elif jogada == "inventario":
-        print("\n Seu inventario: \n")
+        print("\n Seu inventario: ")
+
+        print(' Dicas:')
+        for titulo, item in dicas.items():
+            print(f"{titulo} {item}")
+        print('\n')
+
+        print(' Tentativas:')
+        for nome, dist in certo.items():
+            print(nome, '--------', dist)
+
+        print(f"\n Voce ainda tem {t} tentativas restantes! \n")
+
+        jogada = input("Qual sera sua proxima tentativa?")
 
     #JOGADOR DECIDIU COMPRAR UMA DICA
     elif jogada == "dica":
@@ -118,11 +131,15 @@ while t >= 1 and jogada != 'desisto':
             else:
                 print('Dica ja escolhida')
                 print('saindo do mercado de dicas') 
-
+        
+        else:
+            print("Essa dica não está disponível no momento, tente novamente")
+            print("Saindo do mercado de dicas")
         print('\n Dicas:')
         for titulo, item in dicas.items():
             print(f"{titulo} {item}")
         print('\n')
+        print(f"Voce ainda tem {t} tentativas restantes! \n")
             
         jogada = input("Qual será sua próxima jogada? ")
         
