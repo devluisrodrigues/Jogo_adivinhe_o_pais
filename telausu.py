@@ -1,3 +1,4 @@
+from colorama import Fore
 from random import choices
 from dados import DADOS, EARTH_RADIUS
 from dicas import escolhe_dica, mercado_dicas
@@ -5,7 +6,7 @@ from funcoes import esta_na_lista, haversine, normaliza, organiza_dic, sorteia_l
 
 
 print("\n\nBem-vindo ao Insper Países \n")
-print("Versão desenvolvida por Luis e Leonardo \n")
+print(Fore.GREEN + "Versão desenvolvida por Luis e Leonardo \n" + Fore.RESET)
 print("Comandos: \n dica       - entra no mercado de dicas \n desisto    - desiste da rodada \n inventario - exibe dicas e posição \n")
 
 #Sorteando um pais:
@@ -37,7 +38,7 @@ for valor in lixo:
 
 #Tentativas do jogador
 t = 20
-print(f"Voce tem {t} tentativas:")
+print("Voce tem " + Fore.LIGHTMAGENTA_EX + f"{t}" +Fore.RESET + " tentativas:")
 print(pais)
 jogada = input("Qual sera sua primeira jogada? ")
 
@@ -45,8 +46,8 @@ while t >= 1 and jogada != 'desisto':
 
     #JOGADOR ACERTOU
     if jogada == pais:
-        print("\n Parabens Voce ganhou!!!!\n")
-        print(f"O Pais escolhido era {pais}")
+        print(Fore.LIGHTGREEN_EX + "\n Parabens Voce ganhou!!!!\n")
+        print(f"O Pais escolhido era {pais}" + Fore.RESET)
         break
 
     #JOGADOR QUER ABRIR O INVENTARIO
@@ -62,7 +63,7 @@ while t >= 1 and jogada != 'desisto':
         for nome, dist in certo.items():
             print(nome, '--------', dist)
 
-        print(f"\n Voce ainda tem {t} tentativas restantes! \n")
+        print("Voce ainda tem " + Fore.LIGHTMAGENTA_EX + f"{t}" +Fore.RESET + " tentativas restantes")
 
         jogada = input("Qual sera sua proxima tentativa?")
 
@@ -139,7 +140,7 @@ while t >= 1 and jogada != 'desisto':
         for titulo, item in dicas.items():
             print(f"{titulo} {item}")
         print('\n')
-        print(f"Voce ainda tem {t} tentativas restantes! \n")
+        print("Voce ainda tem " + Fore.LIGHTMAGENTA_EX + f"{t}" +Fore.RESET + " tentativas restantes!")
             
         jogada = input("Qual será sua próxima jogada? ")
         
@@ -159,8 +160,20 @@ while t >= 1 and jogada != 'desisto':
             certo = organiza_dic(tentativas)
     
         for nome, dist in certo.items():
-            print(nome, '--------', dist)
-        print(f"Voce ainda tem {t} tentativas restantes! \n")
+            if dist <= 1000:
+                print(Fore.LIGHTGREEN_EX + f"{nome}", '--------', f"{dist}" + Fore.RESET)
+            elif dist <= 2000:
+                print(Fore.GREEN + f"{nome}", '--------', f"{dist}" + Fore.RESET)
+            elif dist <= 3000:
+                print(Fore.LIGHTYELLOW_EX + f"{nome}", '--------', f"{dist}" + Fore.RESET)
+            elif dist <= 5000:
+                print(Fore.RED + f"{nome}", '--------', f"{dist}" + Fore.RESET)
+            elif dist <= 10000:
+                print(Fore.MAGENTA + f"{nome}", '--------', f"{dist}" + Fore.RESET)
+            else:
+                print(Fore.LIGHTBLACK_EX + f"{nome}", '--------', f"{dist}" + Fore.RESET)
+
+        print("\n Voce ainda tem " + Fore.LIGHTMAGENTA_EX + f"{t}" +Fore.RESET + " tentativas restantes \n")
         jogada = input("Qual sera sua proxima tentativa?")
 
 
