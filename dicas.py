@@ -5,7 +5,7 @@ def mercado_dicas(t):
     print("\n")
     opcoes = []
     dicas = {}
-
+    print('MERCADO DE DICAS:')
     print("------------------------------------------------------------")
     dicas[4] = ["Cor da Bandeira -- custa 4 tentativas",1]
     dicas[3] = ["Letra da capital - custa 3 tentativas",2]
