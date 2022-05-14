@@ -65,7 +65,7 @@ while t >= 1 and jogada != 'desisto':
         elif escolhida == 0:
             print("Saindo do mercado de dicas")
 
-        elif escolhida == 1:
+        elif escolhida == 1 and t > 4:
             print("Cor da bandeira")
             rgb = list(cores.keys())
             port = list(cores.values())
@@ -77,38 +77,44 @@ while t >= 1 and jogada != 'desisto':
                 del cores[cor]
                 draw.append(cor)
                 dicas["Cor da bandeira: "] = draw
+                t -= 4
 
-        elif escolhida == 2:
+        elif escolhida == 2 and t > 3:
             if "Letra da capital:" not in dicas:
                 letras = []
             ele = sorteia_letra(basenormal[pais]["capital"],letras)
             if "Letra da capital:" not in dicas:
                 dicas["Letra da capital:"] = [ele]
                 letras = [ele]
+                t -= 3
             elif ele == '':
                 print("\nTodas as letras da capital já foram sorteadas")
                 print("Saindo do mercado de dicas")
             else:
                 dicas["Letra da capital:"].append(ele)
                 letras.append(ele)
+                t -= 3
         
-        elif escolhida == 3:
+        elif escolhida == 3 and t > 6:
             if 'Area'not in dicas:
                 dicas["Area"] = str(basenormal[pais]['area']) + " KM^2"
+                t -= 6
             else:
                 print('Dica ja escolhida')
                 print('Saindo do mercado de dicas')
 
-        elif escolhida == 4:
+        elif escolhida == 4 and t > 5:
             if 'Populacao' not in dicas:
                 dicas['Populacao'] = str(basenormal[pais]['populacao']) + ' Habitantes'
+                t -= 5
             else:
                 print('Dica ja escolhida')
                 print('saindo do mercado de dicas')        
 
-        elif escolhida == 5:
+        elif escolhida == 5 and t > 7:
             if 'Continente' not  in dicas:
                 dicas['Continente: '] = basenormal[pais]['continente']
+                t -= 7
             else:
                 print('Dica ja escolhida')
                 print('saindo do mercado de dicas') 
