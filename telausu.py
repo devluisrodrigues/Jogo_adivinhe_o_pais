@@ -11,6 +11,7 @@ print(Fore.GREEN + "Versão desenvolvida por Luis e Leonardo \n" + Fore.RESET)
 print("Comandos: \n dica       - entra no mercado de dicas \n desisto    - desiste da rodada \n inventario - exibe dicas e posição \n")
 
 #Sorteando um pais:
+ganhou = False
 basenormal = normaliza(DADOS)
 pais = sorteia_pais(basenormal)
 print("Um país foi escolhido, tente adivinhar!")
@@ -37,18 +38,18 @@ for cor, portcent in band.items():
 for valor in lixo:
     del cores[valor]
 
-#Tentativas do jogador
+#Tentativas do jogador:
 t = 20
 print("Voce tem " + Fore.LIGHTMAGENTA_EX + f"{t}" +Fore.RESET + " tentativas:")
 print(pais)
 jogada = input("Qual sera sua primeira jogada? ")
 
 while t >= 1 and jogada != 'desisto':
-
     #JOGADOR ACERTOU
     if jogada == pais:
         print(Fore.LIGHTGREEN_EX + "\n Parabens Voce ganhou!!!!\n")
         print(f"O Pais escolhido era {pais}" + Fore.RESET)
+        ganhou = True
         break
 
     #JOGADOR QUER ABRIR O INVENTARIO
@@ -184,11 +185,13 @@ while t >= 1 and jogada != 'desisto':
             else:
                 print(Fore.LIGHTBLACK_EX + f"{nome}", '--------', f"{dist}" + Fore.RESET)
 
-        print(tentativas_res(t))
-        jogada = input("Qual sera sua proxima tentativa?")
+        if t>0:
+            print(tentativas_res(t))
+            jogada = input("Qual sera sua proxima tentativa?")
 
 
     #Tentativa INVÁLIDA:
     else:
         print("Sua tentativa e invalida, tente novamente.")
         jogada = input("Digite aqui sua proxima tentativa: ")
+
