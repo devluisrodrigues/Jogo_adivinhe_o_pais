@@ -3,6 +3,7 @@ from random import choices
 from dados import DADOS, EARTH_RADIUS
 from dicas import escolhe_dica, mercado_dicas
 from funcoes import esta_na_lista, haversine, normaliza, organiza_dic, sorteia_letra, sorteia_pais
+from tentativas import tentativas_res
 
 
 print("\n\nBem-vindo ao Insper Países \n")
@@ -61,10 +62,20 @@ while t >= 1 and jogada != 'desisto':
 
         print(' Tentativas:')
         for nome, dist in certo.items():
-            print(nome, '--------', dist)
+            if dist <= 1000:
+                print(Fore.LIGHTGREEN_EX + f"{nome}", '--------', f"{dist}" + Fore.RESET)
+            elif dist <= 2000:
+                print(Fore.GREEN + f"{nome}", '--------', f"{dist}" + Fore.RESET)
+            elif dist <= 3000:
+                print(Fore.LIGHTYELLOW_EX + f"{nome}", '--------', f"{dist}" + Fore.RESET)
+            elif dist <= 5000:
+                print(Fore.RED + f"{nome}", '--------', f"{dist}" + Fore.RESET)
+            elif dist <= 10000:
+                print(Fore.MAGENTA + f"{nome}", '--------', f"{dist}" + Fore.RESET)
+            else:
+                print(Fore.LIGHTBLACK_EX + f"{nome}", '--------', f"{dist}" + Fore.RESET)
 
-        print("Voce ainda tem " + Fore.LIGHTMAGENTA_EX + f"{t}" +Fore.RESET + " tentativas restantes")
-
+        print(tentativas_res(t))
         jogada = input("Qual sera sua proxima tentativa?")
 
     #JOGADOR DECIDIU COMPRAR UMA DICA
@@ -139,11 +150,11 @@ while t >= 1 and jogada != 'desisto':
         print('\n Dicas:')
         for titulo, item in dicas.items():
             print(f"{titulo} {item}")
-        print('\n')
-        print("Voce ainda tem " + Fore.LIGHTMAGENTA_EX + f"{t}" +Fore.RESET + " tentativas restantes!")
+
+        print(tentativas_res(t))
             
         jogada = input("Qual será sua próxima jogada? ")
-        
+    
     #Jogador quer tentar um país:
     elif jogada in basenormal:
         #A tentativa estava na lista de paises, mas nao era o correto
@@ -158,7 +169,7 @@ while t >= 1 and jogada != 'desisto':
             dist = haversine(EARTH_RADIUS,p1,l1,p2,l2)
             tentativas[jogada] = dist
             certo = organiza_dic(tentativas)
-    
+        print("\n")
         for nome, dist in certo.items():
             if dist <= 1000:
                 print(Fore.LIGHTGREEN_EX + f"{nome}", '--------', f"{dist}" + Fore.RESET)
@@ -173,7 +184,7 @@ while t >= 1 and jogada != 'desisto':
             else:
                 print(Fore.LIGHTBLACK_EX + f"{nome}", '--------', f"{dist}" + Fore.RESET)
 
-        print("\n Voce ainda tem " + Fore.LIGHTMAGENTA_EX + f"{t}" +Fore.RESET + " tentativas restantes \n")
+        print(tentativas_res(t))
         jogada = input("Qual sera sua proxima tentativa?")
 
 
