@@ -19,6 +19,7 @@ while dnv == True:
     #Armazenando informações:
     #armazena tentativas e suas respectivas distancias
     tentativas = {}
+    certo = {}
     #armazenas as dicas fornecidas ao usuario
     dicas = {}
     #armazena as letras já sorteada na lista de letras da capital:
