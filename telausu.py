@@ -41,7 +41,6 @@ while dnv == True:
     #Tentativas do jogador:
     t = 20
     print("Voce tem " + Fore.LIGHTMAGENTA_EX + f"{t}" +Fore.RESET + " tentativas:")
-    print(pais)
     jogada = input("Qual sera sua primeira jogada? ")
     jogada = jogada.lower()
 
@@ -49,7 +48,7 @@ while dnv == True:
         #JOGADOR ACERTOU
         if jogada == pais:
             print(Fore.LIGHTGREEN_EX + "\n Parabens Voce ganhou!!!!\n")
-            print(f"O Pais escolhido era {pais}" + Fore.RESET)
+            print(f"  O Pais escolhido era {pais}" + Fore.RESET)
             ganhou = True
             break
 
@@ -200,8 +199,9 @@ while dnv == True:
             jogada = input("Digite aqui sua proxima tentativa: ")
             jogada = jogada.lower()
 
-    if t == 0 and not ganhou:
+    if not ganhou:
         print(Fore.LIGHTRED_EX+"\n Suas tentativas esgotaram, voce perdeu \n"+ Fore.RESET)
+        print(f"O pais sorteado era {pais}")
 
     perg = input("Voce deseja jogar novamente? [s/n] ")
     if perg == 's':
