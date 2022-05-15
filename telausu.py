@@ -1,7 +1,7 @@
 from colorama import Fore
 from random import choices
 from dados import DADOS, EARTH_RADIUS
-from dicas import escolhe_dica, mercado_dicas
+from dicas import  mercado_dicas
 from funcoes import esta_na_lista, haversine, normaliza, organiza_dic, sorteia_letra, sorteia_pais
 from tentativas import tentativas_res
 

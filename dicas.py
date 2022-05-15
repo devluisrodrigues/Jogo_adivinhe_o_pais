@@ -1,5 +1,3 @@
-from funcoes import sorteia_letra
-
 
 def mercado_dicas(t):
     print("\n")
@@ -21,36 +19,3 @@ def mercado_dicas(t):
     print("------------------------------------------------------------")
   
     return opcoes
-
-def escolhe_dica(basenormal,pais,escolhida, dicas,t, opcoes):
-        if escolhida not in opcoes:
-            print("Essa dica não está disponível no momento, tente novamente")
-            print("Saindo do mercado de dicas")
-        elif escolhida == 0:
-            print("Saindo do mercado de dicas")
-        elif escolhida == 1:
-            print("Cor da bandeira")
-        elif escolhida == 2:
-            if "Letra da capital:" not in dicas:
-                letras = []
-            ele = sorteia_letra(basenormal[pais]["capital"],letras)
-            if "Letra da capital:" not in dicas:
-                dicas["Letra da capital:"] = [ele]
-                letras = [ele]
-            else:
-                dicas["Letra da capital:"].append(ele)
-                letras.append(ele)
-        
-        elif escolhida == 3:
-            if 'Area'not in dicas:
-                dicas["Area"] = basenormal[pais]['area']
-            else:
-                print('Dica ja escolhida')
-                print('Saindo do mercado de dicas')
-
-        elif escolhida == 4:
-            if 'Populacao' not in dicas:
-                dicas['Populacao'] = basenormal[pais]['populacao']
-            else:
-                print('Dica ja escolhida')
-                print('saindo do mercado de dicas')
