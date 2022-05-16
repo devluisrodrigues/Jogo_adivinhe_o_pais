@@ -93,7 +93,7 @@ while dnv == True:
 
         #JOGADOR DECIDIU COMPRAR UMA DICA
         elif jogada == "dica":
-            opcoes = mercado_dicas(t)
+            opcoes = mercado_dicas(t,dicas)
             escolhida = int(input(f'Escolha uma dica: {opcoes}: '))
 
             #Conferir o mercado de dicas, cada dica terá um preco e uma info diferente para ajudar o usuario

@@ -1,5 +1,5 @@
 
-def mercado_dicas(t):
+def mercado_dicas(t,escolhida):
     print("\n")
     opcoes = []
     dicas = {}
@@ -11,6 +11,15 @@ def mercado_dicas(t):
     dicas[5] = ["População        - custa 5 tentativas",4]
     dicas[7] = ["Continente       - custa 7 tentativas",5]
     dicas[0] = ["Sem dica",0]
+
+    if "Continente: " in escolhida:
+        del dicas[7]
+    
+    if 'Populacao: ' in escolhida:
+        del dicas[5]
+    
+    if "Area: " in escolhida:
+        del dicas[6]
 
     for nome, info in dicas.items():
         if t > nome:
