@@ -1,9 +1,17 @@
+#Colore as linhas do terminal
 from colorama import Fore
+#Sorteia um valor de uma lista
 from random import choices
+#Acessa o banco de dados para o funcionamento do exercicio
 from dados import DADOS, EARTH_RADIUS
+#Codigo separado para o mercado de dicas
 from dicas import  mercado_dicas
+#Acessa as funcoes requisitadas
 from funcoes import esta_na_lista, haversine, normaliza, organiza_dic, sorteia_letra, sorteia_pais
+#Funcao separada para colorir o numero de tentativas restantes
 from tentativas import tentativas_res
+
+#Da inicio ao loop do jogo, irá se repetir até o usuário digitar n
 dnv = True
 while dnv == True:
     print("\n\nBem-vindo ao Insper Países \n")
@@ -57,11 +65,13 @@ while dnv == True:
         elif jogada == "inventario":
             print("\n Seu inventario: ")
 
+            #Dicas que o usuario possui:
             print(' Dicas:')
             for titulo, item in dicas.items():
                 print(f"{titulo} {item}")
             print('\n')
 
+            #Tentativas que o usuário fez
             print(' Tentativas:')
             for nome, dist in certo.items():
                 if dist <= 1000:
@@ -85,6 +95,8 @@ while dnv == True:
         elif jogada == "dica":
             opcoes = mercado_dicas(t)
             escolhida = int(input(f'Escolha uma dica: {opcoes}: '))
+
+            #Conferir o mercado de dicas, cada dica terá um preco e uma info diferente para ajudar o usuario
 
             if escolhida not in opcoes:
                 print("Essa dica não está disponível no momento, tente novamente")
@@ -124,23 +136,23 @@ while dnv == True:
                     t -= 3
             
             elif escolhida == 3 and t > 6:
-                if 'Area'not in dicas:
-                    dicas["Area"] = str(basenormal[pais]['area']) + " KM^2"
+                if 'Area: 'not in dicas:
+                    dicas["Area: "] = str(basenormal[pais]['area']) + " KM^2"
                     t -= 6
                 else:
                     print('Dica ja escolhida')
                     print('Saindo do mercado de dicas')
 
             elif escolhida == 4 and t > 5:
-                if 'Populacao' not in dicas:
-                    dicas['Populacao'] = str(basenormal[pais]['populacao']) + ' Habitantes'
+                if 'Populacao: ' not in dicas:
+                    dicas['Populacao: '] = str(basenormal[pais]['populacao']) + ' Habitantes'
                     t -= 5
                 else:
                     print('Dica ja escolhida')
                     print('saindo do mercado de dicas')        
 
             elif escolhida == 5 and t > 7:
-                if 'Continente' not  in dicas:
+                if 'Continente: ' not  in dicas:
                     dicas['Continente: '] = basenormal[pais]['continente']
                     t -= 7
                 else:
@@ -200,10 +212,12 @@ while dnv == True:
             jogada = input("Digite aqui sua proxima tentativa: ")
             jogada = jogada.lower()
 
+    #Usuario nao foi capaz de acertar o pais
     if not ganhou:
         print(Fore.LIGHTRED_EX+"\n Suas tentativas esgotaram, voce perdeu \n"+ Fore.RESET)
         print(f"O pais sorteado era {pais}")
 
+    #Apos o fim da rodada, programa pergunta ao usuario se ele deseja uma nova tentativa, caso não, finaliza o loop do jogo.
     perg = input("Voce deseja jogar novamente? [s/n] ")
     if perg == 's':
         dnv = True
