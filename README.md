@@ -1,5 +1,4 @@
 # ep2
-Olá, professor corretor.
 Esse repositório contém o programa referente ao ep2 desenvolvido por Luis Rodrigues e Leonardo Paloschi.
 
 Cabe citar que:
