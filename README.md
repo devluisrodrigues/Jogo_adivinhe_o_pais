@@ -1,5 +1,5 @@
-# ep2
-Esse repositório contém o programa referente ao ep2 desenvolvido por Luis Rodrigues e Leonardo Paloschi.
+# Adivinhe o país
+Esse repositório contém o programa referente ao ep2, desenvolvido por Luis Rodrigues e Leonardo Paloschi.
 
 Cabe citar que:
 todas as 6 funções requisitadas no enunciando do projeto foram implementadas no arquivo funcoes.py
